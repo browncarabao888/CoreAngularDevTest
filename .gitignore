@@ -1,0 +1,105 @@
+##################################
+# .NET Core / Visual Studio
+##################################
+
+## Build results
+bin/
+obj/
+out/
+build/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+
+## Rider (JetBrains)
+.idea/
+*.sln.iml
+
+## Entity Framework
+# Optional: keep if migrations should be tracked
+# Migrations/
+
+## Secrets
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.Secrets.json
+*.key
+*.pfx
+secrets.json
+
+## Logs and database files
+*.log
+logs/
+*.mdf
+*.ldf
+
+##################################
+# Angular / Node.js
+##################################
+
+# Node dependencies
+node_modules/
+
+# Angular build output
+dist/
+.angular/
+.angular-cache/
+tmp/
+temp/
+
+# Environment files
+*.env
+*.local.env
+.env*
+
+# Package manager files
+package-lock.json
+
+##################################
+# OS-specific files
+##################################
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+##################################
+# Tooling
+##################################
+
+# VS Code History & debug output
+.history/
+*.code-workspace
+
+# npm / yarn cache
+.npm/
+.yarn/
+
+# dotCover
+*.dotCover
+
+# Docker (if you use Docker)
+*.pid
+
+##################################
+# Optional: Ignore wwwroot/lib/ if using LibMan
+##################################
+
+# Ignore all .db files except appdata.db
+*.db
+!app.db
+wwwroot/lib/

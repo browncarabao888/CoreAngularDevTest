@@ -1,0 +1,135 @@
+.create-account-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f2f6fb;
+  min-height: 100vh;
+}
+
+.create-account-card {
+  width: 100%;
+  max-width: 500px;
+  height:750px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(25, 118, 210, 0.2);
+}
+
+mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+mat-card-content {
+  padding: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.half-width {
+  flex: 1 1 calc(50% - 8px);
+  min-width: 150px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.terms-checkbox {
+  margin: 12px 0 24px;
+  color: #1976d2;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+  .button-group button:first-child {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 500;
+  }
+
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .half-width {
+    width: 100%;
+  }
+}
+
+/*social media signup*/
+
+.social-signup {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.social-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+  .social-buttons button {
+    background-color: #e3f2fd;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    transition: background-color 0.3s;
+  }
+
+    .social-buttons button:hover {
+      background-color: #bbdefb;
+    }
+
+  .social-buttons mat-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+
+  /*colors*/
+
+.google {
+  color: #fff;
+  background-color: #db4437;
+  border-color: #db4437;
+}
+
+.facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.twitter {
+  color: #fff;
+  background-color: #1da1f2;
+  border-color: #1da1f2;
+}
+
+  .google:hover,
+  .facebook:hover,
+  .twitter:hover {
+    opacity: 0.9;
+  }

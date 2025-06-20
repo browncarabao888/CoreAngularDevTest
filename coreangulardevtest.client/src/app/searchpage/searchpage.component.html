@@ -1,0 +1,74 @@
+<div class="search-map-wrapper">
+
+  <!--<div *ngIf="loading" class="loading-overlay" style="position:center">
+    <div class="loading-spinner">
+      <mat-spinner diameter="60" color="accent"></mat-spinner>
+      <p>Loading data...</p>
+    </div>
+    </div>-->
+
+    <mat-card class="search-controls">
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="flex-item search-field">
+          <mat-label>Search</mat-label>
+          <input matInput [matAutocomplete]="auto" [formControl]="searchControl" (keydown.enter)="onEnterKeySearch(searchInput.value)" #searchInput />
+          <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+          <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="onSelectOption($event.option.value)">
+            <mat-option *ngFor="let suggestion of filteredSuggestions" [value]="suggestion">
+              {{ suggestion }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="flex-item category-field">
+          <mat-label>Select a category</mat-label>
+          <mat-select [(value)]="selectedCategoryId">
+            <mat-option [value]="null">All</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card>
+    <div class="content-container">
+      <div class="page-wrapper" [ngClass]="hasPlaces ? 'with-sidebar' : 'full-width'">
+        <div class="places-list">
+          <div class="card-container">
+            <mat-card class="museum-card" *ngFor="let place of places">
+              <div class="card-content">
+                <mat-card-header>
+                  <mat-card-title>{{ place.name }}</mat-card-title>
+                  <mat-card-subtitle class="tight-subtitle">{{ place?.categories?.[0]?.name }}</mat-card-subtitle>
+                  <mat-card-subtitle class="tight-subtitle">{{ place?.location?.formatted_address }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="icon-button-row">
+                  <img mat-card-image [src]="place.categories[0].icon.prefix + 'bg_64' + place.categories[0].icon.suffix"
+                       [alt]="place.categories[0].name"
+                       width="32"
+                       height="32"
+                       class="category-icon" />
+
+                  <mat-card-actions>
+                    <button matButton (click)="zoomTo(place.geocodes.main.latitude , place.geocodes.main.longitude)">Zoom</button>&nbsp;
+                    <button matButton (click)="onOpenModal(place.name)">Images</button>
+                  </mat-card-actions>
+                </mat-card-content>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+        <div class="map-container">
+          <google-map #map
+                      [height]="'700px'"
+                      [width]="'100%'"
+                      [zoom]="zoom"
+                      [center]="mapCenter">
+            <map-marker [position]="mapCenter"></map-marker>
+          </google-map>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ 
+ 

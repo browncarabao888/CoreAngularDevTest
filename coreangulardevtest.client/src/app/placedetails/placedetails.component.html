@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content class="dialog-body">
+
+  <div *ngIf="loading" class="loading-overlay" style="position:center">
+    <div class="loading-spinner">
+      <mat-spinner diameter="60" color="accent"></mat-spinner>
+      <p>Loading photos...</p>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+
+  <div class="image-grid" *ngIf="!selectedPhoto">
+    <mat-card *ngFor="let img of photos" (click)="onSelectImage(img)">
+      <mat-card-header>
+        <mat-card-title>{{ img.title }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="img.url_m" alt="{{ img.title }}" />
+      <mat-card-content>
+        <p>Flickr Owner Id: {{ img.owner }}</p>
+        <p>Flickr Photo Id: {{ img.id }}</p>
+        <p>Flickr Photo Public: {{ img.ispublic ? 'Yes' : 'No' }}</p>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <div class="selected-photo" *ngIf="selectedPhoto">
+    <mat-card>
+      <mat-card-actions>
+        <button mat-button color="accent" (click)="selectedPhoto = null">Back to all photos</button>
+      </mat-card-actions>
+      <mat-card-header>
+        <mat-card-title>{{ selectedPhoto.title }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="selectedPhoto.url_m" alt="{{ selectedPhoto.title }}" />
+      <mat-card-content>
+        <p>Flickr Owner Id: {{ selectedPhoto.owner }}</p>
+        <p>Flickr Photo Id: {{ selectedPhoto.id }}</p>
+        <p>Flickr Photo Public: {{ selectedPhoto.ispublic ? 'Yes' : 'No' }}</p>
+        <p>Description: {{ selectedPhoto.description }}</p>
+        <p>Image Owner User Name: {{ selectedPhoto.owner }}</p>
+        <p>image Owner Real Name: {{ selectedPhoto.owner }}</p>
+        <p>image Date Taken: {{ selectedPhoto.dateuploaded }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="accent" (click)="selectedPhoto = null">Back to all photos</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</mat-dialog-content>
