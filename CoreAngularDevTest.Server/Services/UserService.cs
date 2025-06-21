@@ -2,6 +2,7 @@
 using CoreAngularDevTest.Server.Models;
 using CoreAngularDevTest.Server.Models.DTO.Accounts;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace CoreAngularDevTest.Server.Services
 {
@@ -46,7 +47,6 @@ namespace CoreAngularDevTest.Server.Services
              
                await _context.Accounts.AddAsync(account);
                 result = await _context.SaveChangesAsync();
-
 
             }
             catch (Exception)
@@ -95,15 +95,29 @@ namespace CoreAngularDevTest.Server.Services
             }
             catch (Exception)
             {
-
                 throw;
             }
             return result;
         }
 
-        public Task<int> ValidateAsync(LoginDTO loginDTO, CancellationToken token)
+        public async Task<int> ValidateAsync(LoginDTO loginDTO, CancellationToken token)
         {
-            throw new NotImplementedException();
+            string username = loginDTO?.username;
+            byte[] bytes = Convert.FromBase64String(loginDTO.passkey);
+            string decoded = Encoding.UTF8.GetString(bytes);
+
+            var result = 0;
+            try
+            {
+                var data = _context.Accounts.Where(u => u.UserName == username && u.Passkey == decoded).FirstOrDefaultAsync();
+                result = data != null ? 1 : 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return result;
+
         }
     }
 }

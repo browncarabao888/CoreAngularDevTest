@@ -1,6 +1,6 @@
 <div class="login-container">
   <mat-card class="login-card">
-    <mat-card-title>Login</mat-card-title>
+    <mat-card-title style="padding-bottom:5px">Login</mat-card-title>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Email</mat-label>
@@ -17,7 +17,7 @@
         <mat-error *ngIf="password?.invalid && password?.touched">Password is required</mat-error>
       </mat-form-field>
 
-      <div class="reset-password-link">
+      <div class="reset-password-link" style="padding-bottom:5px">
         <a routerLink="/reset">Forgot your password?</a>
       </div>
 
@@ -26,6 +26,10 @@
       <button mat-raised-button color="primary" class="full-width" [disabled]="loginForm.invalid">
         Login
       </button>
+
+      <div class="reset-password-link" style="padding-bottom:5px">
+        <a routerLink="/account">Sign me up!</a>
+      </div>
     </form>
   </mat-card>
 </div>

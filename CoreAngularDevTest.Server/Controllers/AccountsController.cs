@@ -3,6 +3,7 @@ using CoreAngularDevTest.Server.Models;
 using CoreAngularDevTest.Server.Models.DTO.Accounts;
 using CoreAngularDevTest.Server.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace CoreAngularDevTest.Server.Controllers
 {
@@ -55,6 +56,7 @@ namespace CoreAngularDevTest.Server.Controllers
         public async Task<IActionResult> Validate([FromBody] LoginDTO loginDTO, CancellationToken token)
         {
             var result = await _userService.ValidateAsync(loginDTO, token);
+                      
 
             if (result <= 0)
                 return BadRequest("failed");
