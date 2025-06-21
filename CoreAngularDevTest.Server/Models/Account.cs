@@ -18,4 +18,6 @@ public partial class Account
     public string? UserName { get; set; }
 
     public int? Status { get; set; }
+
+    public decimal? Datecreated { get; set; }
 }

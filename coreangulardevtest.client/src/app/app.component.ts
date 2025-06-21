@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AccountsService } from './accounts/accounts.service'; 
 
 interface WeatherForecast {
   date: string;
@@ -15,8 +16,14 @@ interface WeatherForecast {
 })
 export class AppComponent implements OnInit {
   public forecasts: WeatherForecast[] = [];
-
-  constructor(private http: HttpClient) {}
+  isLoggedIn = false;
+  constructor(
+    private http: HttpClient,
+    private accountService: AccountsService) {
+    this.accountService.isLoggedIn$.subscribe(status => {
+      this.isLoggedIn = status;
+    })
+  };
 
   ngOnInit() {
     //this.getForecasts();
