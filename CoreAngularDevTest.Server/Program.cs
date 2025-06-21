@@ -37,6 +37,7 @@ public class Program
             });
         });
 
+        builder.Services.AddScoped<IUser,UserService>();
         builder.Services.AddScoped<IFoursquareService, FoursquareService>();
         builder.Services.AddScoped<IFlickr, FlickrService>();
         builder.Services.AddScoped<IGoogleService, GoogleService>();

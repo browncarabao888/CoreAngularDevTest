@@ -9,11 +9,14 @@ namespace CoreAngularDevTest.Server.Controllers
     public class FlickrController : ControllerBase
     {
         private readonly IFlickr _flickrService;
+
+        #region Constructor
         public FlickrController(IFlickr flickrService)
         {
             _flickrService = flickrService;
             
         }
+        #endregion
 
         [HttpGet("{placeName}")]
         public async Task<IActionResult> PhotosSearch(string placeName, CancellationToken token)

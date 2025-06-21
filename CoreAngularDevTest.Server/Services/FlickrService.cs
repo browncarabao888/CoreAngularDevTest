@@ -16,12 +16,14 @@ namespace CoreAngularDevTest.Server.Services
 {
     public class FlickrService : IFlickr
     {
+        #region Variables
         private readonly string _apiKey = "e108ebb0e668a6b1ccdbb17f56e0aafb";
         private readonly ApplicationDbContext _context;
         private readonly IServiceScopeFactory _scopeFactory;
         List<FlickrImageInfoDTO> flickrImageInfoList = new List<FlickrImageInfoDTO>();
+        #endregion
 
-
+        #region Constructor
         public FlickrService(ApplicationDbContext context, IServiceScopeFactory scopeFactory)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -33,7 +35,7 @@ namespace CoreAngularDevTest.Server.Services
             _context = new Mock<ApplicationDbContext>().Object;
             _scopeFactory = new Mock<IServiceScopeFactory>().Object;
         }
-
+        #endregion
 
 
         public virtual async Task<List<FlickrImageInfoDTO>?> GetImageInfoAsync(List<string?>? photoIds, CancellationToken token)
@@ -202,7 +204,7 @@ namespace CoreAngularDevTest.Server.Services
 
             var imgObj = new ImageInfo
             {
-                PhotoId = decimal.TryParse(imgId, out var parsedId) ? parsedId : (decimal?)null,
+                PhotoId = long.TryParse(imgId, out var parsedId) ? parsedId : (long?)null,
                 Imagedata = imgData,
                 Title = img?.title,
                 Description = img?.description,
@@ -210,7 +212,7 @@ namespace CoreAngularDevTest.Server.Services
                 Region = "",
                 Owner = img?.owner,
                 Ownerrealname = img?.OwnerRealName,
-                filename = img?.filename
+                Filename = img?.filename
             };
             db.ImageInfos.Add(imgObj);
             await db.SaveChangesAsync();

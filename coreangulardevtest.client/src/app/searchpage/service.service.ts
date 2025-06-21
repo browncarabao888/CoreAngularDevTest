@@ -5,11 +5,13 @@ import { FourSquareSearchDTO } from '../models/foursquare-search.model';
 import { FlickrPhotoSearchDTO } from '../models/FlickrPhotoSearchDTO';
 import { GoogleGeoResponseDTO } from '../models/GoogleGeoResponseDTO';
 
+import { environment } from './../../env/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class FoursquareService {
-  private baseUrl = 'https://192.168.100.9:5001'; 
+  private baseUrl = environment.apiBaseUrl;
   
 
   constructor(private http: HttpClient) { }

@@ -1,0 +1,27 @@
+ 
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-title>Reset Password</mat-card-title>
+
+    <div class="reset-password-link" style="padding-bottom:5px;padding-top:10px">
+      Enter your registered email address, If email address exists, We will reset your passkey.
+    </div>
+
+
+    <form [formGroup]="ResetForm" (ngSubmit)="onReset()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required>
+        <mat-error *ngIf="email?.invalid && email?.touched"> Valid email required </mat-error>
+      </mat-form-field>
+
+      <div class="reset-password-link" style="padding-bottom:5px">
+        <a routerLink="/account">i'll create a new account!</a>
+      </div>
+
+      <button mat-raised-button color="primary" class="full-width" [disabled]="ResetForm.invalid">
+        Reset
+      </button>
+    </form>
+  </mat-card>
+</div>

@@ -35,6 +35,9 @@ import { SearchpageComponent } from './searchpage/searchpage.component';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 import { PlacedetailsComponent } from './placedetails/placedetails.component';
+import { LoginComponent } from './login/login.component';
+import { ResetpasskeyComponent } from './resetpasskey/resetpasskey.component';
+ 
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { PlacedetailsComponent } from './placedetails/placedetails.component';
     DashboardComponent,
     AccountsComponent,
     SearchpageComponent,
-    PlacedetailsComponent
+    PlacedetailsComponent,
+    LoginComponent,
+    ResetpasskeyComponent 
+  
   ],
   imports: [
     BrowserModule,

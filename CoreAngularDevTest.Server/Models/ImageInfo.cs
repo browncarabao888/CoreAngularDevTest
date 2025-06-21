@@ -5,11 +5,9 @@ namespace CoreAngularDevTest.Server.Models;
 
 public partial class ImageInfo
 {
-    internal string? filename;
+    public int Id { get; set; }
 
-    public int? Id { get; set; }
-
-    public decimal? PhotoId { get; set; }
+    public long? PhotoId { get; set; }
 
     public byte[]? Imagedata { get; set; }
 
@@ -28,4 +26,6 @@ public partial class ImageInfo
     public string? Country { get; set; }
 
     public int? Deleted { get; set; }
+
+    public string? Filename { get; set; }
 }

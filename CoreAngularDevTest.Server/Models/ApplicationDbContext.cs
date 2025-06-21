@@ -39,9 +39,9 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Viewport> Viewports { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlite("Data Source=app.db");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlite("Data Source=devtest.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,6 +49,9 @@ public partial class ApplicationDbContext : DbContext
         {
             entity.ToTable("accounts");
 
+            entity.Property(e => e.Datecreated)
+                .HasColumnType("NUMERIC")
+                .HasColumnName("datecreated");
             entity.Property(e => e.Emailaddress).HasColumnName("emailaddress");
             entity.Property(e => e.FirstName).HasColumnName("first_name");
             entity.Property(e => e.LastName).HasColumnName("last_name");
@@ -129,6 +132,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasDefaultValue(0)
                 .HasColumnName("deleted");
             entity.Property(e => e.Description).HasColumnName("description");
+            entity.Property(e => e.Filename).HasColumnName("filename");
             entity.Property(e => e.Imagedata).HasColumnName("imagedata");
             entity.Property(e => e.Location).HasColumnName("location");
             entity.Property(e => e.Owner).HasColumnName("owner");
