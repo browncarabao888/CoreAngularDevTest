@@ -10,7 +10,7 @@ namespace CoreAngularDevTest.Server.Services
 {
     public class GoogleService : IGoogleService
     {
-        private readonly string _apiKey = "AIzaSyAe5G5jq4BDS0dA6YD4DkLQdejY9kYwLhs";
+        private readonly string _apiKey = "google api key here";
 
         public async Task<GoogleGeoResponseDTO?> GetGeoInfoByLocationName(string loc, CancellationToken token)
         {
