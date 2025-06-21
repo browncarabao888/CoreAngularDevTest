@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountsService } from '../accounts/accounts.service';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { EncryptionService } from './../service/encryption.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent {
   private snkbarRef: MatSnackBarRef<TextOnlySnackBar> | null = null;
 
   constructor(
+    private router: Router,
     private accountsService: AccountsService,
     private fb: FormBuilder,
     private snkbar: MatSnackBar,
@@ -48,23 +50,10 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       const form = this.loginForm;
-
-      console.log('Logging in with:', email, password);
       let msg = '';
-
-
       this.accountsService.login(email, password).subscribe({
         next: response => {
-
-          msg = 'Account successfully created';
-
-          this.snkbar.open(msg, 'Close', {
-            duration: 3000,
-            panelClass: ['snackbar-error']
-          });
-
-          form.value.password = '';
-          form.value.confirmPassword = '';
+          this.router.navigate(['searchpage']);
         },
         error: err => {
           let msg = 'An unexpected error occurred.';

@@ -78,11 +78,14 @@ export class AccountsComponent {
       return;
     }
 
+    const rawPassword = form.value.password ?? '';
+    const passkey = btoa(rawPassword);
+
     const payload = {
       FirstName: form.value.firstName,
       LastName: form.value.lastName,
       Emailaddress: form.value.email,
-      Passkey: form.value.password,
+      Passkey: passkey,
       UserName: form.value.email
     };
 
