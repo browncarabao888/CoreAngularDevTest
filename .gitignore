@@ -101,5 +101,5 @@ Desktop.ini
 
 # Ignore all .db files except appdata.db
 *.db
-!app.db
+!devtest.db
 wwwroot/lib/
